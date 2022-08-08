@@ -7,7 +7,7 @@
   gap: 16px 25px;
   grid-template-areas:
   'name button'
-  'description .'  
+  'description .';
 }
 
 @media screen and (max-width: 720px){
@@ -15,5 +15,5 @@
     grid-template-columns: minmax(min-content, 189px) 18px;
     margin:22.25px auto 36px auto;
     gap: 14px 10px;
-  }  
+  }
 }

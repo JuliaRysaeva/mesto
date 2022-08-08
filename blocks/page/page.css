@@ -1,9 +1,9 @@
 .page {
   max-width: 880px;
-  min-width: 320px;  
+  min-width: 320px;
   font-family: 'Inter', Arial, sans-serif;
   color: #FFFFFF;
-  display:flex;  
+  display:flex;
   flex-direction: column;
   justify-content: center;
   padding: 45px 0 60px 0;
