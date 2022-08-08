@@ -1,0 +1,11 @@
+.popup__form-field {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  color: black;
+  border: none;
+  border-bottom: 1px solid rgb(0,0,0,0.2);
+  box-sizing: border-box;
+  padding-bottom: 13px;
+  margin-bottom: 30px;
+}

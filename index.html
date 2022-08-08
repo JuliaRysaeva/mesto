@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang='ru'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1'>
+    <link rel='stylesheet' href='pages/index.css'>
+    <title>Mesto</title>
+  </head>
+
+  <body class='body'>
+    <div class='page'>
+      <header class='header'>
+        <img src='images/header__logo.svg' class='header__logo' alt='Mesto'>
+      </header>
+  
+      <main class='content'>
+        <section class='profile'>
+          <div class='profile__avatar'></div>
+          <div class='profile__info'>
+            <p class='profile__title'>Космонавт</p>
+            <button class='profile__icon'></button>
+            <p class='profile__job'>Исследователь космоса</p>            
+          </div>
+          <button class='profile__add-button'></button>
+        </section>
+
+        <section class='elements'>
+          <div class='element'>
+            <img src='images/earth.jpg' class='element__mask-group' alt='Земля'>
+            <div class='element__text'>
+              <p class='element__title'>Земля</p>
+              <button class='element__vector element__vector_active'></button>
+            </div>           
+          </div>          
+          
+          <div class='element'>
+            <img src='images/saturn.jpg' class='element__mask-group' alt='Сатурн'>
+            <div class='element__text'>
+              <p class='element__title'>Сатурн</p>
+              <button class='element__vector element__vector_active'></button>
+            </div>               
+          </div>
+
+          <div class='element'>
+            <img src='images/moon.jpg' class='element__mask-group' alt='Луна'>
+            <div class='element__text'>
+              <p class='element__title'>Луна</p>
+              <button class='element__vector element__vector_active'></button>
+            </div>              
+          </div>
+
+          <div class='element'>
+            <img src='images/uranus.jpg' class='element__mask-group' alt='Уран'>
+            <div class='element__text'>
+              <p class='element__title'>Уран</p>
+              <button class='element__vector element__vector_active'></button>
+            </div>              
+          </div>
+
+          <div class='element'>
+            <img src='images/venus.jpg' class='element__mask-group' alt='Венера'>
+            <div class='element__text'>
+              <p class='element__title'>Венера</p>
+              <button class='element__vector element__vector_active'></button>
+            </div>             
+          </div>
+
+          <div class='element'>
+            <img src='images/mars.jpg' class='element__mask-group' alt='Марс'>
+            <div class='element__text'>
+              <p class='element__title'>Марс</p>
+              <button class='element__vector element__vector_active'></button>
+            </div>               
+          </div>
+        </section>        
+      </main>
+
+      <footer class='footer'>
+        <p class='footer__copyright'>&copy; 2022 Mesto Russia</p>
+      </footer>
+
+      <section class='popup'>        
+        <div class='popup__container'>
+          <button class='popup__close-icon'></button>
+          <form class='popup__form'>
+            <p class='popup__title'>Редактировать профиль</p>
+            <input type='text' name='name' id='name' class='popup__form-field'>
+            <input type='text' name='about' id='about' class='popup__form-field'>
+            <button class='popup__button' type='submit'>Сохранить</button>
+          </form>
+        </div>
+      </section>
+    </div>
+    <script src='script/script.js'></script>
+  </body>
+</html>
