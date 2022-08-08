@@ -17,61 +17,61 @@
         <section class='profile'>
           <div class='profile__avatar'></div>
           <div class='profile__info'>
-            <p class='profile__title'>Космонавт</p>
-            <button class='profile__icon'></button>
+            <h1 class='profile__title'>Космонавт</h1>
+            <button class='profile__icon' type='button'></button>
             <p class='profile__job'>Исследователь космоса</p>            
           </div>
-          <button class='profile__add-button'></button>
+          <button class='profile__add-button' type='button'></button>
         </section>
 
         <section class='elements'>
-          <div class='element'>
+          <article class='element'>
             <img src='images/earth.jpg' class='element__mask-group' alt='Земля'>
             <div class='element__text'>
               <p class='element__title'>Земля</p>
-              <button class='element__vector element__vector_active'></button>
+              <button class='element__vector element__vector_active' type='submit'></button>
             </div>           
-          </div>          
+          </article>          
           
-          <div class='element'>
+          <article class='element'>
             <img src='images/saturn.jpg' class='element__mask-group' alt='Сатурн'>
             <div class='element__text'>
               <p class='element__title'>Сатурн</p>
-              <button class='element__vector element__vector_active'></button>
+              <button class='element__vector element__vector_active' type='submit'></button>
             </div>               
-          </div>
+          </article>
 
-          <div class='element'>
+          <article class='element'>
             <img src='images/moon.jpg' class='element__mask-group' alt='Луна'>
             <div class='element__text'>
               <p class='element__title'>Луна</p>
-              <button class='element__vector element__vector_active'></button>
+              <button class='element__vector element__vector_active' type='submit'></button>
             </div>              
-          </div>
+          </article>
 
-          <div class='element'>
+          <article class='element'>
             <img src='images/uranus.jpg' class='element__mask-group' alt='Уран'>
             <div class='element__text'>
               <p class='element__title'>Уран</p>
-              <button class='element__vector element__vector_active'></button>
+              <button class='element__vector element__vector_active' type='submit'></button>
             </div>              
-          </div>
+          </article>
 
-          <div class='element'>
+          <article class='element'>
             <img src='images/venus.jpg' class='element__mask-group' alt='Венера'>
             <div class='element__text'>
               <p class='element__title'>Венера</p>
-              <button class='element__vector element__vector_active'></button>
+              <button class='element__vector element__vector_active' type='submit'></button>
             </div>             
-          </div>
+          </article>
 
-          <div class='element'>
+          <article class='element'>
             <img src='images/mars.jpg' class='element__mask-group' alt='Марс'>
             <div class='element__text'>
               <p class='element__title'>Марс</p>
-              <button class='element__vector element__vector_active'></button>
+              <button class='element__vector element__vector_active' type='submit'></button>
             </div>               
-          </div>
+          </article>
         </section>        
       </main>
 
@@ -81,9 +81,9 @@
 
       <section class='popup'>        
         <div class='popup__container'>
-          <button class='popup__close-icon'></button>
-          <form class='popup__form'>
-            <p class='popup__title'>Редактировать профиль</p>
+          <button class='popup__close-icon' type='button'></button>
+          <form name='edit-profile' class='popup__form'>
+            <h2 class='popup__title'>Редактировать профиль</h2>
             <input type='text' name='name' id='name' class='popup__form-field'>
             <input type='text' name='about' id='about' class='popup__form-field'>
             <button class='popup__button' type='submit'>Сохранить</button>

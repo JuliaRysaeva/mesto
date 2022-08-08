@@ -34,3 +34,8 @@ jobInput.value = profileJob.textContent;
   openButton.addEventListener ('click', Popup);
   closeButton.addEventListener ('click', Popup);
   safeButton.addEventListener ('click', Popup);
+  
+  closeButton.addEventListener ('click', function (){
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
+  });
