@@ -18,8 +18,8 @@ jobInput.value = profileJob.textContent;
   evt.preventDefault();
 
   // Значение полей jobInput и nameInput из свойства value
-  nameInput.value;
-  jobInput.value;
+  //nameInput.value;
+  //jobInput.value;
   
   // Новые значения профиля из формы с помощью textContent
   profileName.textContent = nameInput.value;
