@@ -14,10 +14,12 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__mask-group/element__mask-group.css);
+@import url(../blocks/element/__mask-group/_opened/element__mask-group_opened.css);
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__vector/element__vector.css);
 @import url(../blocks/element/__text/element__text.css);
 @import url(../blocks/element/__vector/_active/element__vector_active.css);
+@import url(../blocks/element/__bin/element__bin.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/__form/popup__form.css);
@@ -28,7 +30,13 @@
 @import url(../blocks/popup/__form-field/popup__form-field.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__close-icon/popup__close-icon.css);
+@import url(../blocks/newcard/newcard.css);
+@import url(../blocks/full-picture/full-picture.css);
+@import url(../blocks/full-picture/_opened/full-picture_opened.css);
+@import url(../blocks/full-picture/__card-container/full-picture__card-container.css);
+@import url(../blocks/full-picture/__card/full-picture__card.css);
+@import url(../blocks/full-picture/__subtitle/full-picture__subtitle.css);
 
-/* * {
-  border: 1px solid red;
+/* *{
+  border: 1px solid rgb(165, 165, 230);
 } */

@@ -1,3 +1,8 @@
+@keyframes cool {
+  from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 .popup {
   position: fixed;
   top: 0;
@@ -8,9 +13,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 0;  
+  z-index: 0;
+  animation: cool 1s;
 }
-.popup::before {
+
+.popup::before{
   content: '';
   position: fixed;
   top: 0;

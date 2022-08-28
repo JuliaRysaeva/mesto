@@ -25,53 +25,16 @@
         </section>
 
         <section class='elements'>
-          <article class='element'>
-            <img src='images/earth.jpg' class='element__mask-group' alt='Земля'>
-            <div class='element__text'>
-              <p class='element__title'>Земля</p>
-              <button class='element__vector element__vector_active' type='button'></button>
-            </div>           
-          </article>          
-          
-          <article class='element'>
-            <img src='images/saturn.jpg' class='element__mask-group' alt='Сатурн'>
-            <div class='element__text'>
-              <p class='element__title'>Сатурн</p>
-              <button class='element__vector element__vector_active' type='button'></button>
-            </div>               
-          </article>
-
-          <article class='element'>
-            <img src='images/moon.jpg' class='element__mask-group' alt='Луна'>
-            <div class='element__text'>
-              <p class='element__title'>Луна</p>
-              <button class='element__vector element__vector_active' type='button'></button>
-            </div>              
-          </article>
-
-          <article class='element'>
-            <img src='images/uranus.jpg' class='element__mask-group' alt='Уран'>
-            <div class='element__text'>
-              <p class='element__title'>Уран</p>
-              <button class='element__vector element__vector_active' type='button'></button>
-            </div>              
-          </article>
-
-          <article class='element'>
-            <img src='images/venus.jpg' class='element__mask-group' alt='Венера'>
-            <div class='element__text'>
-              <p class='element__title'>Венера</p>
-              <button class='element__vector element__vector_active' type='button'></button>
-            </div>             
-          </article>
-
-          <article class='element'>
-            <img src='images/mars.jpg' class='element__mask-group' alt='Марс'>
-            <div class='element__text'>
-              <p class='element__title'>Марс</p>
-              <button class='element__vector element__vector_active' type='button'></button>
-            </div>               
-          </article>
+          <template id='template'>
+            <article class='element'>
+              <button class='element__bin' type='button'></button>
+              <img class='element__mask-group'>
+              <div class='element__text'>
+                <p class='element__title'></p>
+                <button class='element__vector' type='button'></button>
+              </div>           
+            </article>
+          </template>        
         </section>        
       </main>
 
@@ -89,6 +52,26 @@
             <button class='popup__button' type='submit'>Сохранить</button>
           </form>
         </div>
+      </section>
+
+       <section class='popup newcard'>        
+        <div class='popup__container'>
+          <button class='popup__close-icon' type='button'></button>
+          <form name='edit-profile' class='popup__form newcard__form'>
+            <h2 class='popup__title'>Новое место</h2>
+            <input type='text' name='name' class='popup__form-field newcard__name' placeholder='Название'>
+            <input type='text' name='about' class='popup__form-field newcard__link' placeholder='Ссылка на картинку'>
+            <button class='popup__button newcard__button' type='submit'>Создать</button>
+          </form>
+        </div>
+      </section>
+
+      <section class='popup full-picture'>        
+        <figure class='full-picture__card-container'>
+          <button class='popup__close-icon' type='button'></button>                
+          <img class='element__mask-group full-picture__card' src='#' alt='Фото'>
+          <figcaption class='full-picture__subtitle'></figcaption>
+        </figure>        
       </section>
     </div>
     <script src='script/script.js'></script>
