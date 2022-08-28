@@ -92,9 +92,9 @@ const template = document.querySelector('#template').content;
     })
     //картинка на весь экран
     const picturePopup = document.querySelector('.full-picture');
-    const Pic = document.querySelector('.element__mask-group');    
+    const Pic = document.querySelector('.full-picture__card');    
     const closeButtonForPic = picturePopup.querySelector('.popup__close-icon');
-    const bigPic = picturePopup.querySelector('.element__mask-group');
+    const bigPic = picturePopup.querySelector('.full-picture__card');
     const subtitle = picturePopup.querySelector('.full-picture__subtitle');    
     
     function showPic(){
