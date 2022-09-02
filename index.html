@@ -10,7 +10,7 @@
   <body class='body'>
     <div class='page'>
       <header class='header'>
-        <img src='images/header__logo.svg' class='header__logo' alt='Место'>
+        <img src='images/header__logo.svg' class='header__logo' alt='Место логотип'>
       </header>
   
       <main class='content'>
@@ -42,33 +42,33 @@
         <p class='footer__copyright'>&copy; 2022 Mesto Russia</p>
       </footer>
 
-      <section class='popup'>        
+      <section class='popup popup_type_profile-edit'>        
         <div class='popup__container'>
           <button class='popup__close-icon' type='button'></button>
           <form name='edit-profile' class='popup__form'>
             <h2 class='popup__title'>Редактировать профиль</h2>
-            <input type='text' name='name' id='name' class='popup__form-field'>
-            <input type='text' name='about' id='about' class='popup__form-field'>
-            <button class='popup__button' type='submit'>Сохранить</button>
+            <input type='text' name='name' id='name' class='popup__form-field popup__form-field_user-name_name' placeholder='Имя'>
+            <input type='text' name='about' id='about' class='popup__form-field popup__form-field_user-job_job' placeholder='Профессия'>
+            <button class='popup__button popup__button_button-type_safe' type='submit'>Сохранить</button>
           </form>
         </div>
       </section>
 
-       <section class='popup newcard'>        
+       <section class='popup newcard popup_type_add-card'>        
         <div class='popup__container'>
-          <button class='popup__close-icon' type='button'></button>
-          <form name='edit-profile' class='popup__form newcard__form'>
+          <button class='popup__close-icon popup__close-icon_type_add-card' type='button'></button>
+          <form name='edit-profile' class='popup__form popup__form_type_add-card'>
             <h2 class='popup__title'>Новое место</h2>
-            <input type='text' name='name' class='popup__form-field newcard__name' placeholder='Название'>
-            <input type='text' name='about' class='popup__form-field newcard__link' placeholder='Ссылка на картинку'>
-            <button class='popup__button newcard__button' type='submit'>Создать</button>
+            <input type='text' name='name' class='popup__form-field popup__form-field_card-name_name' placeholder='Название'>
+            <input type='text' name='about' class='popup__form-field popup__form-field_card-link_link' placeholder='Ссылка на картинку'>
+            <button class='popup__button popup__button_button-type_create' type='submit'>Создать</button>
           </form>
         </div>
       </section>
 
-      <section class='popup full-picture'>        
+      <section class='popup popup_type_full-picture'>        
         <figure class='full-picture__card-container'>
-          <button class='popup__close-icon' type='button'></button>                
+          <button class='popup__close-icon popup__close-icon_type_full-picture' type='button'></button>                
           <img class='full-picture__card' src='#' alt='Фото'>
           <figcaption class='full-picture__subtitle'></figcaption>
         </figure>        
