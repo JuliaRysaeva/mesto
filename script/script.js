@@ -1,6 +1,6 @@
 const content = document.querySelector('.content');
 const popupProfileEdit = document.querySelector('.popup_type_profile-edit');
-const formElement = popupProfileEdit.querySelector('.popup__form');
+const formProfileEdit = popupProfileEdit.querySelector('.popup__form');
 const nameInput = popupProfileEdit.querySelector('.popup__form-field_user-name_name');
 const jobInput = popupProfileEdit.querySelector('.popup__form-field_user-job_job');
 const buttonProfileEdit = content.querySelector('.profile__icon');
@@ -15,8 +15,12 @@ const cardName = document.querySelector('.popup__form-field_card-name_name');
 const cardLink = document.querySelector('.popup__form-field_card-link_link');
 const buttonCreateCard = document.querySelector('.popup__button_button-type_create');
 const buttonCloseNewCard = popupNewCard.querySelector('.popup__close-icon_type_add-card');
-const elements = content.querySelector('.elements');
+const cardsContainer = content.querySelector('.elements');
 const template = document.querySelector('#template').content;
+const picturePopup = document.querySelector('.popup_type_full-picture');
+const closeButtonForPic = picturePopup.querySelector('.popup__close-icon_type_full-picture');
+const fullPic = picturePopup.querySelector('.full-picture__card');
+const subtitle = picturePopup.querySelector('.full-picture__subtitle'); 
 
 const initialCards = [
   {name: 'Земля', link: 'images/earth.jpg'},
@@ -35,7 +39,7 @@ const initialCards = [
   profileJob.textContent = jobInput.value;
 }   
   // Прикрепляем обработчик к форме: он будет следить за событием “submit” - «отправка»
-  formElement.addEventListener('submit', handleProfileFormSubmit);
+  formProfileEdit.addEventListener('submit', handleProfileFormSubmit);
   
   function openPopup(popup) {
     popup.classList.add('popup_opened');    
@@ -52,18 +56,24 @@ const initialCards = [
  buttonCloseNewCard.addEventListener('click', () => closePopup(popupNewCard));
  buttonCreateCard.addEventListener('click', () => closePopup(popupNewCard));
 
+ //закрытие окна с большой картинкой 
+//При каждом выполнении функции renderCard на кнопку закрытия добавляются обработчики,
+//они копятся и происходит утечка памяти, это лишняя нагрузка. 
+//Обработчик для закрытия нужно расположить в глобальной области видимости
+  closeButtonForPic.addEventListener('click', () => closePopup(picturePopup));
+
  //поля формы по умолчанию заполнены данными со страниицы
   buttonProfileEdit.addEventListener ('click', function (){
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
   }); 
     //обработчик отправки формы при создании новой карточки
-    function handleAddCardFormSubmit(e) {
+  function handleAddCardFormSubmit(e) {
     e.preventDefault();    
     const name = cardName.value;
     const link = cardLink.value;
-    const card=renderCards({name: name, link: link});
-    elements.prepend(card);
+    const card=renderCard({name: name, link: link});
+    cardsContainer.prepend(card);
     //при каждом открытии попапа поля пустые
     cardName.value='';
     cardLink.value='';
@@ -71,17 +81,18 @@ const initialCards = [
   cardForm.addEventListener('submit', handleAddCardFormSubmit);
 
  //вывод массива карточек на страницу
- function renderCards(el) {
+ function renderCard(el) {
     const item = template.cloneNode(true);
+    item.querySelector('.element__mask-group').alt = el.name;
     item.querySelector('.element__title').textContent = el.name;
-    item.querySelector('.element__mask-group').src = el.link;  
-    
-    //кнопка лайка 
+    item.querySelector('.element__mask-group').src = el.link;
+    //item.querySelector('.element__mask-group').alt ='fygyhjk';
+  //кнопка лайка 
  const likeButton = item.querySelector('.element__vector');
  //функция обработчик клика с колбэком 
  likeButton.addEventListener('click', function (){
  likeButton.classList.toggle('element__vector_active');      
-});   
+}); 
 
 //удаление 
 const binButton = item.querySelector('.element__bin');
@@ -91,28 +102,18 @@ binButton.addEventListener('click', function(evt){
 })
 
 //картинка на весь экран
-const picturePopup = document.querySelector('.popup_type_full-picture');
-const pic = item.querySelector('.element__mask-group');    
-const closeButtonForPic = picturePopup.querySelector('.popup__close-icon_type_full-picture');
-const fullPic = picturePopup.querySelector('.full-picture__card');
-const subtitle = picturePopup.querySelector('.full-picture__subtitle');    
-
-function showCard(){
-  picturePopup.classList.toggle('full-picture_opened');
+const pic = item.querySelector('.element__mask-group');
+pic.addEventListener('click', function (){
+  openPopup(picturePopup);
   fullPic.src = el.link;
   subtitle.textContent = el.name;
   fullPic.alt = el.name;
-}    
-pic.addEventListener('click', showCard);
-closeButtonForPic.addEventListener('click',function (){
-  picturePopup.classList.remove('full-picture_opened');
 });
-//сщхранение карточки в возвращаемом значении функции
+//сохранение карточки в возвращаемом значении функции
     return item;
   };
   initialCards.forEach((el) =>{
-    //результат фнкции в переменную card
-  const card = renderCards({name: el.name, link: el.link});
-  elements.prepend(card);   
-});
-  
+  //результат фнкции в переменную card
+  const card = renderCard({name: el.name, link: el.link});
+  cardsContainer.prepend(card);   
+});  
