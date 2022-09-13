@@ -1,4 +1,4 @@
-const Forms = {
+const configValidation = {
   form: '.popup__form',
   input: '.popup__form-field',
   button: '.popup__button',
@@ -43,7 +43,6 @@ function validateForm(obj){
 function validateInput (form, obj){
   const inputsList = Array.from(form.querySelectorAll(obj.input));  
   const button = form.querySelector(obj.button);
-  
   inputsList.forEach((input)=>{
     setButtonState(inputsList, button, obj);
     input.addEventListener('input', ()=>{
@@ -66,7 +65,6 @@ function setButtonState (inputsList, button, obj){
   }else{
     button.removeAttribute('disabled');
     button.classList.remove(obj.buttonDisabled);
-    button.classList.add('popup__button');
   }
 }
-validateForm(Forms);
+validateForm(configValidation);

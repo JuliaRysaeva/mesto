@@ -31,104 +31,105 @@ const initialCards = [
   {name: 'Млечный путь', link: 'images/milkyway.jpg'},
 ];
 
-  function handleProfileFormSubmit (evt) {  
+function handleProfileFormSubmit (evt) {
   evt.preventDefault();  
   // Новые значения профиля из формы с помощью textContent
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-}   
-  // Прикрепляем обработчик к форме: он будет следить за событием “submit” - «отправка»
-  formProfileEdit.addEventListener('submit', handleProfileFormSubmit);
-  
-  function openPopup(popup) {
-    popup.classList.add('popup_opened');    
- }
-  function closePopup(popupyt) {
-    popupyt.classList.remove('popup_opened');
 }
- buttonProfileEdit.addEventListener ('click', () => openPopup(popupProfileEdit));
- buttonCloseProfileEdit.addEventListener ('click', () => closePopup(popupProfileEdit));
- buttonSafeCard.addEventListener ('click', () => closePopup(popupProfileEdit));
+// Прикрепляем обработчик к форме: он будет следить за событием “submit” - «отправка»
+formProfileEdit.addEventListener('submit', handleProfileFormSubmit);
 
- //обработтчики для добавления карточки
- buttonAddCard.addEventListener('click', () => openPopup(popupNewCard));
- buttonCloseNewCard.addEventListener('click', () => closePopup(popupNewCard));
- buttonCreateCard.addEventListener('click', () => closePopup(popupNewCard));
+//закрытие попапа нажатием на Esc
+function keyHandler(evt){
+  if (evt.key==='Escape'){
+    closePopup(document.querySelector('.popup_opened'));
+  }
+}
+//функции открытия/закрытия попапов
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keyup', keyHandler);  
+}
+function closePopup(popup) {
+  document.removeEventListener('keyup', keyHandler); 
+  popup.classList.remove('popup_opened'); 
+}
+buttonProfileEdit.addEventListener ('click', () => openPopup(popupProfileEdit));
+buttonCloseProfileEdit.addEventListener ('click', () => closePopup(popupProfileEdit));
+buttonSafeCard.addEventListener ('click', () => closePopup(popupProfileEdit));
 
- //закрытие окна с большой картинкой 
+//обработтчики для добавления карточки
+buttonAddCard.addEventListener('click', () => {
+  openPopup(popupNewCard);
+  buttonCreateCard.classList.add('popup__button_disabled');
+  //при каждом открытии попапа поля пустые
+  cardForm.reset();
+});
+buttonCloseNewCard.addEventListener('click', () => closePopup(popupNewCard));
+buttonCreateCard.addEventListener('click', () => closePopup(popupNewCard));
+
+//закрытие окна с большой картинкой 
+
 //При каждом выполнении функции renderCard на кнопку закрытия добавляются обработчики,
 //они копятся и происходит утечка памяти, это лишняя нагрузка. 
 //Обработчик для закрытия нужно расположить в глобальной области видимости
-  closeButtonForPic.addEventListener('click', () => closePopup(picturePopup));
+closeButtonForPic.addEventListener('click', () => closePopup(picturePopup));
 
- //поля формы по умолчанию заполнены данными со страниицы
-  buttonProfileEdit.addEventListener ('click', function (){
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileJob.textContent;
-  }); 
-    //обработчик отправки формы при создании новой карточки
-  function handleAddCardFormSubmit(e) {
-    e.preventDefault();    
-    const name = cardName.value;
-    const link = cardLink.value;
-    const card=renderCard({name: name, link: link});
-    cardsContainer.prepend(card);
-    //при каждом открытии попапа поля пустые
-    cardName.value='';
-    cardLink.value='';
-  }
-  cardForm.addEventListener('submit', handleAddCardFormSubmit);
-
- //вывод массива карточек на страницу
- function renderCard(el) {
-    const item = template.cloneNode(true);
-    item.querySelector('.element__mask-group').alt = el.name;
-    item.querySelector('.element__title').textContent = el.name;
-    item.querySelector('.element__mask-group').src = el.link;
-  //кнопка лайка 
- const likeButton = item.querySelector('.element__vector');
- likeButton.addEventListener('click', function (){
- likeButton.classList.toggle('element__vector_active');      
+//поля формы по умолчанию заполнены данными со страниицы
+buttonProfileEdit.addEventListener ('click', function (){
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
 }); 
+//обработчик отправки формы при создании новой карточки
+function handleAddCardFormSubmit(e) {
+  e.preventDefault();
+  buttonCreateCard.setAttribute('disabled', true)
+  const name = cardName.value;
+  const link = cardLink.value;
+  const card=renderCard({name: name, link: link});
+  cardsContainer.prepend(card);
+}
+cardForm.addEventListener('submit', handleAddCardFormSubmit);
 
-//удаление 
-const binButton = item.querySelector('.element__bin');
-binButton.addEventListener('click', function(evt){
-  const cardToDelete = evt.target.closest('.element');
-  cardToDelete.remove();
-})
+//вывод массива карточек на страницу
+function renderCard(el) {
+  const item = template.cloneNode(true);
+  const pic = item.querySelector('.element__mask-group');
+  pic.alt = el.name;
+  pic.src = el.link;
+  item.querySelector('.element__title').textContent = el.name;  
+  //кнопка лайка
+  const likeButton = item.querySelector('.element__vector');
+  likeButton.addEventListener('click', function (){
+  likeButton.classList.toggle('element__vector_active');      
+  });
+  //удаление
+  const binButton = item.querySelector('.element__bin');
+  binButton.addEventListener('click', function(evt){
+    const cardToDelete = evt.target.closest('.element');
+    cardToDelete.remove();
+  })
 
-//картинка на весь экран
-const pic = item.querySelector('.element__mask-group');
-pic.addEventListener('click', function (){
-  openPopup(picturePopup);
-  fullPic.src = el.link;
-  subtitle.textContent = el.name;
-  fullPic.alt = el.name;
-});
-//сохранение карточки в возвращаемом значении функции
-    return item;
-  };
-  initialCards.forEach((el) =>{
+  //картинка на весь экран
+  pic.addEventListener('click', function (){
+    openPopup(picturePopup);
+    fullPic.src = el.link;
+    subtitle.textContent = el.name;
+    fullPic.alt = el.name;
+  });
+  //сохранение карточки в возвращаемом значении функции
+  return item;
+};
+initialCards.forEach((el) =>{
   //результат фнкции в переменную card
   const card = renderCard({name: el.name, link: el.link});
   cardsContainer.prepend(card);   
-});  
-document.addEventListener('keyup', keyHandler); 
-function keyHandler(evt){
-  if (evt.key==='Escape'){
-    closePopup(picturePopup);
-    closePopup(popupProfileEdit);
-    closePopup(popupNewCard);
-  }
-}
-
+});
 //закрытие попапов нажатием на оверлей
 function closeByOverlay(evt){
   if(!evt.target.closest('.popup__container')){
-    closePopup(picturePopup);
-    closePopup(popupProfileEdit);
-    closePopup(popupNewCard); 
+    closePopup(document.querySelector('.popup_opened'));
   }}
 popupNewCard.addEventListener('click', closeByOverlay);
 popupProfileEdit.addEventListener('click', closeByOverlay);

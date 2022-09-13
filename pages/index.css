@@ -32,7 +32,6 @@
 @import url(../blocks/popup/__close-icon/popup__close-icon.css);
 @import url(../blocks/newcard/newcard.css);
 @import url(../blocks/full-picture/full-picture.css);
-@import url(../blocks/full-picture/_opened/full-picture_opened.css);
 @import url(../blocks/full-picture/__card-container/full-picture__card-container.css);
 @import url(../blocks/full-picture/__card/full-picture__card.css);
 @import url(../blocks/full-picture/__subtitle/full-picture__subtitle.css);
