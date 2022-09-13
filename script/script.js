@@ -5,7 +5,7 @@ const nameInput = popupProfileEdit.querySelector('.popup__form-field_user-name_n
 const jobInput = popupProfileEdit.querySelector('.popup__form-field_user-job_job');
 const buttonProfileEdit = content.querySelector('.profile__icon');
 const buttonCloseProfileEdit = popupProfileEdit.querySelector('.popup__close-icon');
-const buttonSafeCard = popupProfileEdit.querySelector('.popup__button_button-type_safe');
+const buttonSafeCard = popupProfileEdit.querySelector('.popup__button_type_safe');
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__job');
 const buttonAddCard = content.querySelector('.profile__add-button');
@@ -13,14 +13,14 @@ const popupNewCard = document.querySelector('.popup_type_add-card');
 const cardForm = document.querySelector('.popup__form_type_add-card');
 const cardName = document.querySelector('.popup__form-field_card-name_name');
 const cardLink = document.querySelector('.popup__form-field_card-link_link');
-const buttonCreateCard = document.querySelector('.popup__button_button-type_create');
+const buttonCreateCard = document.querySelector('.popup__button_type_create');
 const buttonCloseNewCard = popupNewCard.querySelector('.popup__close-icon_type_add-card');
 const cardsContainer = content.querySelector('.elements');
 const template = document.querySelector('#template').content;
 const picturePopup = document.querySelector('.popup_type_full-picture');
 const closeButtonForPic = picturePopup.querySelector('.popup__close-icon_type_full-picture');
 const fullPic = picturePopup.querySelector('.full-picture__card');
-const subtitle = picturePopup.querySelector('.full-picture__subtitle'); 
+const subtitle = picturePopup.querySelector('.full-picture__subtitle');
 
 const initialCards = [
   {name: 'Земля', link: 'images/earth.jpg'},
@@ -30,9 +30,8 @@ const initialCards = [
   {name: 'Венера', link: 'images/venus.jpg'},
   {name: 'Млечный путь', link: 'images/milkyway.jpg'},
 ];
-  
-  function handleProfileFormSubmit (evt) {    
-  // Отмена стандартной отправки формы для определения собственной логики отправки. 
+
+  function handleProfileFormSubmit (evt) {  
   evt.preventDefault();  
   // Новые значения профиля из формы с помощью textContent
   profileName.textContent = nameInput.value;
@@ -86,10 +85,8 @@ const initialCards = [
     item.querySelector('.element__mask-group').alt = el.name;
     item.querySelector('.element__title').textContent = el.name;
     item.querySelector('.element__mask-group').src = el.link;
-    //item.querySelector('.element__mask-group').alt ='fygyhjk';
   //кнопка лайка 
  const likeButton = item.querySelector('.element__vector');
- //функция обработчик клика с колбэком 
  likeButton.addEventListener('click', function (){
  likeButton.classList.toggle('element__vector_active');      
 }); 
@@ -117,3 +114,22 @@ pic.addEventListener('click', function (){
   const card = renderCard({name: el.name, link: el.link});
   cardsContainer.prepend(card);   
 });  
+document.addEventListener('keyup', keyHandler); 
+function keyHandler(evt){
+  if (evt.key==='Escape'){
+    closePopup(picturePopup);
+    closePopup(popupProfileEdit);
+    closePopup(popupNewCard);
+  }
+}
+
+//закрытие попапов нажатием на оверлей
+function closeByOverlay(evt){
+  if(!evt.target.closest('.popup__container')){
+    closePopup(picturePopup);
+    closePopup(popupProfileEdit);
+    closePopup(popupNewCard); 
+  }}
+popupNewCard.addEventListener('click', closeByOverlay);
+popupProfileEdit.addEventListener('click', closeByOverlay);
+picturePopup.addEventListener('click', closeByOverlay);

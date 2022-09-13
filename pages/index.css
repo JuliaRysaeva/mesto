@@ -36,7 +36,10 @@
 @import url(../blocks/full-picture/__card-container/full-picture__card-container.css);
 @import url(../blocks/full-picture/__card/full-picture__card.css);
 @import url(../blocks/full-picture/__subtitle/full-picture__subtitle.css);
-
+@import url(../blocks/popup/__form-field/_type_error/popup__form-field_type_error.css);
+@import url(../blocks/popup/__input-error/popup__input-error.css);
+@import url(../blocks/popup/__input-error/_active/popup__input-error_active.css);
+@import url(../blocks/popup/__button/_disabled/popup__button_disabled.css);
 /* *{
   border: 1px solid rgb(165, 165, 230);
 } */
