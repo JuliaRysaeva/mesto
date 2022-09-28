@@ -10,6 +10,7 @@ const initialCards = [
   {name: 'Венера', link: 'images/venus.jpg'},
   {name: 'Млечный путь', link: 'images/milkyway.jpg'},
 ];
+
 export class Card {
   constructor (name, link, clickOnCard, handleAddCardFormSubmit) {
   this._name=name;
@@ -30,10 +31,11 @@ export class Card {
   //метод, создающий карточку с названием и картинкой (наполнение карточки)
   generateCard(){
     this._element=this._getTemplate();
+    this._cardImage = this._element.querySelector('.element__mask-group');
     this._setEventListeners();
     this._element.querySelector('.element__title').textContent = this._name;
-    this._element.querySelector('.element__mask-group').src = this._link;
-    this._element.querySelector('.element__mask-group').alt = this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
 
     return this._element;
   }
@@ -47,7 +49,7 @@ export class Card {
       this._deleteCard(evt);
     });
     //на весь экран
-    this._element.querySelector('.element__mask-group').addEventListener('click', ()=>{
+    this._cardImage.addEventListener('click', ()=>{
       this._clickOnCard(this._name, this._link);
     });
   }

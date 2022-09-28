@@ -62,13 +62,13 @@ function keyHandler(evt){
   }
 }
 //функции открытия/закрытия попапов
-function openPopup(popup) {
+function openPopup(popup) {  
   popup.classList.add('popup_opened');
-  document.addEventListener('keyup', keyHandler);  
+  document.addEventListener('keyup', keyHandler);
 }
-function closePopup(popup) {   
-  popup.classList.remove('popup_opened'); 
+function closePopup(popup) {
   document.removeEventListener('keyup', keyHandler);
+  popup.classList.remove('popup_opened');
 }
 buttonProfileEdit.addEventListener ('click', () => openPopup(popupProfileEdit));
 buttonCloseProfileEdit.addEventListener ('click', () => closePopup(popupProfileEdit));
@@ -85,7 +85,7 @@ buttonCloseNewCard.addEventListener('click', () => closePopup(popupNewCard));
 buttonCreateCard.addEventListener('click', () => closePopup(popupNewCard));
 //закрытие попапов нажатием на оверлей
 function closeByOverlay(evt){
-  if(!evt.target.closest('.popup__container')){
+  if(!evt.target.closest('.popup__container')&&(!evt.target.closest('.full-picture__card-container'))){
     closePopup(document.querySelector('.popup_opened'));
   }}
 popupNewCard.addEventListener('click', closeByOverlay);
