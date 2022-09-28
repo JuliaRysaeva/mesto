@@ -2,9 +2,9 @@ const configValidation = {
   form: '.popup__form',
   input: '.popup__form-field',
   button: '.popup__button',
-  buttonDisabled: 'popup__button_disabled',
   inputError: 'popup__form-field_type_error',
-  errorVisible: 'popup__input-error_active'
+  errorVisible: 'popup__input-error_active',  
+  buttonDisabled: 'popup__button_disabled'
 };
 
 //функция выделения поля с ошибкой и показ текста ошибки
