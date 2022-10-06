@@ -53,7 +53,7 @@ buttonProfileEdit.addEventListener ('click', function (){
   jobInput.value = profileJob.textContent;
   openPopup(popupProfileEdit);
   //вызов метода валидации формы для деактивации кнопки
-  firstForm.disableButton();
+  profileFormValidator.disableButton();
 });
 //обработчик вынесен в связи с замечанием ревьюера для предотвращения утечки памяти
 closeButtonForPic.addEventListener('click',()=>closePopup(picturePopup));
@@ -84,7 +84,7 @@ buttonCloseProfileEdit.addEventListener ('click', () => closePopup(popupProfileE
 //обработчики для добавления карточки
 buttonAddCard.addEventListener('click', () => {
   openPopup(popupNewCard);
-  secondForm.disableButton();
+  cardFormValidator.disableButton();
   //при каждом открытии попапа поля пустые
   cardForm.reset();  
 });

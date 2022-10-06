@@ -59,8 +59,7 @@ export class FormValidator {
   //кнопка неактивна, если валидация не пройдена
   _setButtonState (){
     if (this._hasInvalidInput(this._inputsList)){
-      this._formButton.setAttribute('disabled', true);
-      this._formButton.classList.add(this._buttonDisabled);
+      this.disableButton();
     }else{
       this._formButton.removeAttribute('disabled');
       this._formButton.classList.remove(this._buttonDisabled);
