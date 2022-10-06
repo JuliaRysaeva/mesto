@@ -1,6 +1,5 @@
-import {Card} from './Card.js';
+import {initialCards, Card} from './Card.js';
 import {configValidation, FormValidator} from './FormValidator.js';
-export {cardsContainer, template, createCard, clickOnCard};
 
 const content = document.querySelector('.content');
 const popupProfileEdit = document.querySelector('.popup_type_profile-edit');
@@ -24,23 +23,22 @@ const closeButtonForPic = picturePopup.querySelector('.popup__close-icon_type_fu
 const fullPic = picturePopup.querySelector('.full-picture__card');
 const subtitle = picturePopup.querySelector('.full-picture__subtitle');
 
-
 //обработчик отправки формы карточки
 function handleAddCardFormSubmit(e) {
-  e.preventDefault();
+  e.preventDefault();  
   const name = cardName.value;
   const link = cardLink.value; 
   const card = createCard({name:name, link:link});
-  cardsContainer.prepend(card);
+  cardsContainer.prepend(card);  
 }
 cardForm.addEventListener('submit', (e) => {
   closePopup(popupNewCard);
-  handleAddCardFormSubmit(e)
+  handleAddCardFormSubmit(e);  
 });
 
 //обработчик отправки формы профиля
-function handleProfileFormSubmit (evt) {
-  evt.preventDefault();  
+function handleProfileFormSubmit (e) {
+  e.preventDefault();  
   // Новые значения профиля из формы с помощью textContent
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
@@ -54,6 +52,8 @@ buttonProfileEdit.addEventListener ('click', function (){
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
   openPopup(popupProfileEdit);
+  //вызов метода валидации формы для деактивации кнопки
+  firstForm.disableButton();
 });
 //обработчик вынесен в связи с замечанием ревьюера для предотвращения утечки памяти
 closeButtonForPic.addEventListener('click',()=>closePopup(picturePopup));
@@ -84,8 +84,9 @@ buttonCloseProfileEdit.addEventListener ('click', () => closePopup(popupProfileE
 //обработчики для добавления карточки
 buttonAddCard.addEventListener('click', () => {
   openPopup(popupNewCard);
+  secondForm.disableButton();
   //при каждом открытии попапа поля пустые
-  cardForm.reset();
+  cardForm.reset();  
 });
 buttonCloseNewCard.addEventListener('click', () => closePopup(popupNewCard));
 
@@ -98,12 +99,13 @@ popupNewCard.addEventListener('click', closeByOverlay);
 popupProfileEdit.addEventListener('click', closeByOverlay);
 picturePopup.addEventListener('click', closeByOverlay);
 
+//валидация
 const formForProfile=document.querySelector('.popup_type_profile-edit')
-const firstForm = new FormValidator(configValidation, formForProfile);
-firstForm.enableValidation();
-const formForCard=document.querySelector('.popup_type_add-card')
-const secondForm = new FormValidator(configValidation, formForCard);
-secondForm.enableValidation();
+const profileFormValidator = new FormValidator(configValidation, formForProfile);
+profileFormValidator.enableValidation();
+const formForCard=document.querySelector('.popup_type_add-card') 
+const cardFormValidator = new FormValidator(configValidation, formForCard);
+cardFormValidator.enableValidation();
 
 //создание карточки
 function createCard(item){
@@ -111,10 +113,7 @@ function createCard(item){
   const card = cardElement.generateCard();
   return card;
 }
-
-
-
-
-
-
-
+initialCards.forEach((item)=>{
+  const create=createCard(item);
+  cardsContainer.append(create);
+});

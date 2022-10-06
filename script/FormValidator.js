@@ -39,40 +39,43 @@ export class FormValidator {
     }
   };
   //валидация поля формы
-  _setEventListeners (){
+  _setEventListeners (){    
     this._inputsList = Array.from(this._formItem.querySelectorAll(this._input));
-    this._button = this._formItem.querySelector(this._button);
+    this._formButton = this._formItem.querySelector(this._button);
+    this._setButtonState(); 
     this._inputsList.forEach((input)=>{
-    this._setButtonState(this._inputsList, this._button);
       input.addEventListener('input', ()=>{
         this._isValid(input);
-        this._setButtonState(this._inputsList, this._button);
-      })
-    }); 
+        this._setButtonState();                
+      });
+    })       
   }
   //провека на невалидность хотя бы одного поля
   _hasInvalidInput(inputsList){
     return inputsList.some((input)=>{
-      return !input.validity.valid;
+      return !input.validity.valid
     })
   }
   //кнопка неактивна, если валидация не пройдена
-  _setButtonState (inputsList, button){
-    if (this._hasInvalidInput(inputsList)){
-      button.setAttribute('disabled', true);    
-      button.classList.add(this._buttonDisabled);
+  _setButtonState (){
+    if (this._hasInvalidInput(this._inputsList)){
+      this._formButton.setAttribute('disabled', true);
+      this._formButton.classList.add(this._buttonDisabled);
     }else{
-      button.removeAttribute('disabled');
-      button.classList.remove(this._buttonDisabled);
+      this._formButton.removeAttribute('disabled');
+      this._formButton.classList.remove(this._buttonDisabled);
     }
   }
+  //деактивация кнопки
+  disableButton(){
+    this._formButton.setAttribute('disabled', true);
+    this._formButton.classList.add(this._buttonDisabled);
+  }
   //метод валидации формы
-  enableValidation(){  
-    this._formItem.addEventListener('submit', (e)=>{
-      e.preventDefault();
-    });
+  enableValidation(){
     this._setEventListeners();
   }
+  
 }
 
 

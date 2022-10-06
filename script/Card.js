@@ -1,4 +1,11 @@
-import {cardsContainer, template, createCard} from './index.js';
+export const initialCards = [
+  {name: 'Земля', link: 'images/earth.jpg'},
+  {name: 'Сатурн', link: 'images/saturn.jpg'},
+  {name: 'Луна', link: 'images/moon.jpg'},
+  {name: 'Уран', link: 'images/uranus.jpg'},
+  {name: 'Венера', link: 'images/venus.jpg'},
+  {name: 'Млечный путь', link: 'images/milkyway.jpg'},
+];
 
 export class Card {
   constructor (name, link, template, clickOnCard){
@@ -9,7 +16,7 @@ export class Card {
   }
   //метод, возвращающий карточку из разметки в DOM элемент
   _getTemplate(){
-    const cardElement = template.querySelector('.element').cloneNode(true);
+    const cardElement = this._template.querySelector('.element').cloneNode(true);
     return cardElement;
   }
   _setEventListeners(){
@@ -46,17 +53,6 @@ export class Card {
     return this._element;
   }
 }
-const initialCards = [
-  {name: 'Земля', link: 'images/earth.jpg'},
-  {name: 'Сатурн', link: 'images/saturn.jpg'},
-  {name: 'Луна', link: 'images/moon.jpg'},
-  {name: 'Уран', link: 'images/uranus.jpg'},
-  {name: 'Венера', link: 'images/venus.jpg'},
-  {name: 'Млечный путь', link: 'images/milkyway.jpg'},
-];
-initialCards.forEach((item)=>{
-  const create=createCard(item);
-  cardsContainer.append(create);
-});
+
 
 
