@@ -1,17 +1,8 @@
-export const initialCards = [
-  {name: 'Земля', link: 'images/earth.jpg'},
-  {name: 'Сатурн', link: 'images/saturn.jpg'},
-  {name: 'Луна', link: 'images/moon.jpg'},
-  {name: 'Уран', link: 'images/uranus.jpg'},
-  {name: 'Венера', link: 'images/venus.jpg'},
-  {name: 'Млечный путь', link: 'images/milkyway.jpg'},
-];
-
 export class Card {
-  constructor (name, link, template, clickOnCard){
+  constructor ({name, link}, template){
   this._name=name;
   this._link=link;
-  this._clickOnCard = clickOnCard;
+  //this._clickOnCard = clickOnCard;
   this._template = template;
   }
   //метод, возвращающий карточку из разметки в DOM элемент
@@ -29,9 +20,9 @@ export class Card {
       this._deleteCard(evt);
     });
     //на весь экран
-    this._cardImage.addEventListener('click', ()=>{
+    /* this._cardImage.addEventListener('click', ()=>{
       this._clickOnCard(this._name, this._link);
-    });
+    }); */
   }
   _deleteCard(evt){
     const cardToDelete = evt.target.closest('.element');
