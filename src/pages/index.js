@@ -68,13 +68,18 @@ buttonAddCard.addEventListener('click', ()=>{
 buttonProfileEdit.addEventListener('click', ()=>{
   const item1 = new PopupWithForm(popupProfileEdit,
     handleProfileFormSubmit)
-  item1.setEventListeners();
-  item1.open()});
+    item1.setEventListeners();
+    item1.open();
+    const item = new UserInfo({name:profileName, job:profileJob})
+    const userData = item.getUserInfo();
+    nameInput.value=userData.name;
+    jobInput.value=userData.job;
 
-  function handleProfileFormSubmit(){
-    const item = new UserInfo({profileName, profileJob})
-    item.getUserInfo();
-    item.setUserInfo({nameInput, jobInput});
-  }
-  console.log(nameInput, jobInput)
-  console.log(profileName, profileJob)
+  }); 
+  function handleProfileFormSubmit(data){     
+    const item = new UserInfo({name:profileName, job:profileJob})
+    item.setUserInfo(data.name, data.job);                
+   } 
+
+  function handleCardFormSubmit(){
+}
