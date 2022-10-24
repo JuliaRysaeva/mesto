@@ -1,29 +1,31 @@
 export default class Popup {
-  constructor(popupSelector){
-    this._popup = popupSelector;
+  constructor(popup){
+    this._popup = popup;
   }
-  /* _handleEscClose(e){
+  _handleEscClose(e){
     if (e.key==='Escape'){
-      close(document.querySelector('.popup_opened'));
-    }
-  } */
+      console.log('нажат esc')
+      this.close();} 
+  } 
   open(){
     this._popup.classList.add('popup_opened');
-    //document.addEventListener('keyup', this._handleEscClose());
+    this._popup.addEventListener('keyup',(e)=>{this._handleEscClose(e)})   
   }
   close(){    
     this._popup.classList.remove('popup_opened');
-    //document.removeEventListener('keyup', this._handleEscClose());
-  }  
+    this._popup.removeEventListener('keyup',(e)=>{this._handleEscClose(e)});   
+  }
   setEventListeners(){
     //закрытие по кнопке закрытия
-    this._button = document.querySelector('.popup__close-icon')
-    this._button.addEventListener ('click', () => close(this._popup));
-//закрытие по оверлею
+    this._button = document.querySelector('.popup__close-icon');    
+    this._button.addEventListener ('click', ()=>{
+      console.log("клик по кнопке" +`${this._button}`)
+      this.close()});
+    //закрытие по оверлею
     this._popup.addEventListener('click', (e)=>{
       if(!e.target.closest('.popup__container')
       &&(!e.target.closest('.full-picture__card-container'))){
-        close(document.querySelector('.popup_opened'));
+        this.close();
       }
     }
     )

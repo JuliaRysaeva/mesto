@@ -1,8 +1,8 @@
 export class Card {
-  constructor ({name, link}, template){
+  constructor ({name, link}, template, clickOnCard){
   this._name=name;
   this._link=link;
-  //this._clickOnCard = clickOnCard;
+  this._clickOnCard = clickOnCard;
   this._template = template;
   }
   //метод, возвращающий карточку из разметки в DOM элемент
@@ -19,10 +19,10 @@ export class Card {
     this._element.querySelector('.element__bin').addEventListener('click', (evt)=>{
       this._deleteCard(evt);
     });
-    //на весь экран
-    /* this._cardImage.addEventListener('click', ()=>{
-      this._clickOnCard(this._name, this._link);
-    }); */
+    // на весь экран
+    this._cardImage.addEventListener('click', (e)=>{
+      this._clickOnCard();
+    }); 
   }
   _deleteCard(evt){
     const cardToDelete = evt.target.closest('.element');
@@ -41,7 +41,7 @@ export class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
 
-    return this._element;
+    return this._element;    
   }
 }
 
