@@ -40,35 +40,38 @@ const formForCard=document.querySelector('.popup_type_add-card')
 const cardFormValidator = new FormValidator(configValidation, formForCard);
 cardFormValidator.enableValidation();
 
+// rартинка на весь экран
+const picture = new PopupWithImage(picturePopup)
+function handleCardClick({name:name, link:link}){   
+picture.open({name:name, link:link});
+}
 //открытие формы для профиля
-buttonProfileEdit.addEventListener('click', ()=>{
-  const item = new PopupWithForm(popupProfileEdit, handleProfileFormSubmit)
-    item.setEventListeners();
-    item.open();
-    const element = new UserInfo({name:profileName, job:profileJob})
-    const userData = element.getUserInfo();
-    nameInput.value=userData.name;
-    jobInput.value=userData.job;
-  });
-  function handleProfileFormSubmit(data){     
-    const item = new UserInfo({name:profileName, job:profileJob})
-    item.setUserInfo(data.name, data.job);
-  }
+const item = new PopupWithForm(popupProfileEdit, handleProfileFormSubmit)
+item.setEventListeners();
+const element = new UserInfo({name:profileName, job:profileJob})
 
-//открытие формы для карточки
- buttonAddCard.addEventListener('click', ()=>{
-  const item = new PopupWithForm(popupNewCard, handleCardFormSubmit) 
-  item.setEventListeners();
+buttonProfileEdit.addEventListener('click', ()=>{
   item.open();
+  const userData = element.getUserInfo();
+  nameInput.value=userData.name;
+  jobInput.value=userData.job;
+});
+  function handleProfileFormSubmit(data){    
+    element.setUserInfo(data.name, data.job);
+  }
+//открытие формы для карточки
+const addCardPopup = new PopupWithForm(popupNewCard, 
+  handleCardFormSubmit); 
+addCardPopup.setEventListeners();
+
+ buttonAddCard.addEventListener('click', ()=>{
+  addCardPopup.open();
 })
 function handleCardFormSubmit(data){
-    const newCard = new Card({card: data.card, about: data.about}, 
-      template, handleCardClick);
-      console.log(newCard)
-   const createNewCard = newCard.generateCard();
+  const newCard = new Card({card: data.card, about: data.about},
+    template, handleCardClick);
+    console.log(newCard)
+    const createNewCard = newCard.generateCard();
    cardsContainer.prepend(createNewCard);
   }
-  function handleCardClick(){  
-  const picture = new PopupWithImage(picturePopup)    
-  picture.open();
-}
+

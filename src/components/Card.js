@@ -20,8 +20,8 @@ export class Card {
       this._deleteCard(evt);
     });
     // на весь экран
-    this._cardImage.addEventListener('click', (e)=>{
-      this._clickOnCard();
+    this._cardImage.addEventListener('click', ()=>{
+      this._clickOnCard({name:this._name, link:this._link});
     }); 
   }
   _deleteCard(evt){

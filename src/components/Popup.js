@@ -4,16 +4,15 @@ export default class Popup {
   }
   _handleEscClose(e){
     if (e.key==='Escape'){
-      console.log('нажат esc')
       this.close();} 
   } 
   open(){
     this._popup.classList.add('popup_opened');
-    this._popup.addEventListener('keyup',(e)=>{this._handleEscClose(e)})   
+    document.addEventListener('keyup',(e)=>{this._handleEscClose(e)})   
   }
   close(){    
     this._popup.classList.remove('popup_opened');
-    this._popup.removeEventListener('keyup',(e)=>{this._handleEscClose(e)});   
+    document.removeEventListener('keyup',(e)=>{this._handleEscClose(e)});   
   }
   setEventListeners(){
     //закрытие по кнопке закрытия
