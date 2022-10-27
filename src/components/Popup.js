@@ -16,9 +16,8 @@ export default class Popup {
   }
   setEventListeners(){
     //закрытие по кнопке закрытия
-    this._button = document.querySelector('.popup__close-icon');    
-    this._button.addEventListener ('click', ()=>{
-      console.log("клик по кнопке" +`${this._button}`)
+    this._button = this._popup.querySelector('.popup__close-icon');    
+    this._button.addEventListener('click', ()=>{
       this.close()});
     //закрытие по оверлею
     this._popup.addEventListener('click', (e)=>{
