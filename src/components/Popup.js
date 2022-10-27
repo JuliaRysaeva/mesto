@@ -4,15 +4,15 @@ export default class Popup {
   }
   _handleEscClose(e){
     if (e.key==='Escape'){
-      this.close();} 
-  } 
+      this.close();
+    } 
+  }  
   open(){
     this._popup.classList.add('popup_opened');
-    document.addEventListener('keyup',(e)=>{this._handleEscClose(e)})   
+    document.addEventListener('keyup',(e)=>{this._handleEscClose(e)}, {once: true})  
   }
   close(){    
-    this._popup.classList.remove('popup_opened');
-    document.removeEventListener('keyup',(e)=>{this._handleEscClose(e)});   
+    this._popup.classList.remove('popup_opened');      
   }
   setEventListeners(){
     //закрытие по кнопке закрытия
@@ -21,8 +21,7 @@ export default class Popup {
       this.close()});
     //закрытие по оверлею
     this._popup.addEventListener('click', (e)=>{
-      if(!e.target.closest('.popup__container')
-      &&(!e.target.closest('.full-picture__card-container'))){
+      if(!e.target.closest('.popup__overlay_type_close')){
         this.close();
       }
     }

@@ -42,7 +42,7 @@
       </footer>
 
       <section class='popup popup_type_profile-edit'>        
-        <div class='popup__container'>
+        <div class='popup__container popup__overlay_type_close'>
           <button class='popup__close-icon' type='button'></button>
           <form name='editProfile' class='popup__form popup__form_type_profile' novalidate>
             <h2 class='popup__title'>Редактировать профиль</h2>
@@ -56,13 +56,13 @@
       </section>
 
        <section class='popup popup_type_add-card'>        
-        <div class='popup__container'>
+        <div class='popup__container popup__overlay_type_close'>
           <button class='popup__close-icon popup__close-icon_type_add-card' type='button'></button>
           <form name='addCard' class='popup__form popup__form_type_add-card' novalidate>
             <h2 class='popup__title'>Новое место</h2>
             <input id='card-name' type='text' name='card' class='popup__form-field popup__form-field_card-name_name' placeholder='Название' minlength='2' maxlength='30' required >
             <span class='popup__input-error card-name-error'></span>
-            <input id='card-url' type='url' name='about' class='popup__form-field popup__form-field_card-link_link' placeholder='Ссылка на картинку' required>
+            <input id='card-url' type='url' name='link' class='popup__form-field popup__form-field_card-link_link' placeholder='Ссылка на картинку' required>
             <span class='popup__input-error card-url-error'></span>
             <button class='popup__button popup__button_type_create' type='submit'>Создать</button>
           </form>
@@ -70,7 +70,7 @@
       </section>
 
       <section class='popup full-picture popup_type_full-picture'>        
-        <figure class='full-picture__card-container'>
+        <figure class='full-picture__card-container popup__overlay_type_close'>
           <button class='popup__close-icon popup__close-icon_type_full-picture' type='button'></button>                
           <img class='full-picture__card' src='#' alt='Фото'>
           <figcaption class='full-picture__subtitle'></figcaption>

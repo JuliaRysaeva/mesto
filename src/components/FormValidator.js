@@ -7,14 +7,14 @@ export const configValidation = {
   buttonDisabled: 'popup__button_disabled'
 };
 export class FormValidator {
-  constructor(obj, form) {
-    this._form = obj.form;
-    this._input = obj.input;
-    this._button = obj.button;
-    this._inputError = obj.inputError;
-    this._errorVisible = obj.errorVisible;    
-    this._buttonDisabled = obj.buttonDisabled;
-    this._formItem = form;
+  constructor(validationConfig, popup) {
+    this._form = validationConfig.form;
+    this._input = validationConfig.input;
+    this._button = validationConfig.button;
+    this._inputError = validationConfig.inputError;
+    this._errorVisible = validationConfig.errorVisible;    
+    this._buttonDisabled = validationConfig.buttonDisabled;
+    this._formItem = popup;
   }
 //функция выделения поля с ошибкой и показ текста ошибки
   _showError(input){ 
@@ -43,6 +43,7 @@ export class FormValidator {
     this._inputsList = Array.from(this._formItem.querySelectorAll(this._input));
     this._formButton = this._formItem.querySelector(this._button);
     this._setButtonState(); 
+    
     this._inputsList.forEach((input)=>{
       input.addEventListener('input', ()=>{
         this._isValid(input);
@@ -74,7 +75,15 @@ export class FormValidator {
   enableValidation(){
     this._setEventListeners();
   }
-  
+  //очищении формы от ошибок, если до этого она была закрыта с ошибками
+  resetError(){
+    this._inputsList.forEach((input)=>{
+      input.classList.remove(this._inputError)
+    });
+    const errors = Array.from(this._formItem.querySelectorAll('.popup__input-error'));
+    errors.forEach((er)=>{
+      er.classList.remove(this._errorVisible);
+      er.textContent='';
+    })
+  }
 }
-
-
