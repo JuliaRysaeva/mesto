@@ -21,7 +21,7 @@ export default class Popup {
       this.close()});
     //закрытие по оверлею
     this._popup.addEventListener('click', (e)=>{
-      if(!e.target.closest('.popup__overlay_type_close')){
+      if(!e.target.closest('.popup__overlay-close')){
         this.close();
       }
     }
