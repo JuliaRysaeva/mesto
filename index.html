@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang='ru'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, height=device-height, initial-scale=1'>
+    <title>Mesto</title>
+  <script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
+
+  <body class='body'>
+    <div class='page'>
+      <header class='header'>
+        <img src="03b78ada3425e9132ff3.svg" class='header__logo' alt='Мeсто'>
+      </header>
+  
+      <main class='content'>
+        <section class='profile'>
+          <div class='profile__avatar'></div>
+          <div class='profile__info'>
+            <h1 class='profile__title'>Космонавт</h1>
+            <button class='profile__icon' type='button'></button>
+            <p class='profile__job'>Исследователь космоса</p>            
+          </div>
+          <button class='profile__add-button' type='button'></button>
+        </section>
+
+        <section class='elements'>
+          <template id='template'>
+            <article class='element'>
+              <button class='element__bin' type='button'></button>
+              <img class='element__mask-group' alt='#'>
+              <div class='element__text'>
+                <p class='element__title'></p>
+                <button class='element__vector' type='button'></button>
+              </div>           
+            </article>
+          </template>        
+        </section>        
+      </main>
+
+      <footer class='footer'>
+        <p class='footer__copyright'>&copy; 2022 Mesto Russia</p>
+      </footer>
+
+      <section class='popup popup_type_profile-edit'>        
+        <div class='popup__container popup__overlay-close'>
+          <button class='popup__close-icon' type='button'></button>
+          <form name='editProfile' class='popup__form popup__form_type_profile' novalidate>
+            <h2 class='popup__title'>Редактировать профиль</h2>
+            <input type='text' name='name' id='name' class='popup__form-field popup__form-field_user-name_name' placeholder='Имя' minlength='2' maxlength='40' required>
+            <span class='popup__input-error name-error'></span>
+            <input type='text' name='job' id='job' class='popup__form-field popup__form-field_user-job_job' placeholder='О себе' minlength='2' maxlength='200' required>
+            <span class='popup__input-error job-error'></span>
+            <button class='popup__button popup__button_type_safe' type='submit'>Сохранить</button>
+          </form>
+        </div>
+      </section>
+
+       <section class='popup popup_type_add-card '>        
+        <div class='popup__container popup__overlay-close'>
+          <button class='popup__close-icon popup__close-icon_type_add-card' type='button'></button>
+          <form name='addCard' class='popup__form popup__form_type_add-card' novalidate>
+            <h2 class='popup__title'>Новое место</h2>
+            <input id='card-name' type='text' name='card' class='popup__form-field popup__form-field_card-name_name' placeholder='Название' minlength='2' maxlength='30' required >
+            <span class='popup__input-error card-name-error'></span>
+            <input id='card-url' type='url' name='link' class='popup__form-field popup__form-field_card-link_link' placeholder='Ссылка на картинку' required>
+            <span class='popup__input-error card-url-error'></span>
+            <button class='popup__button popup__button_type_create' type='submit'>Создать</button>
+          </form>
+        </div>
+      </section>
+
+      <section class='popup full-picture popup_type_full-picture'>        
+        <figure class='full-picture__card-container popup__overlay-close'>
+          <button class='popup__close-icon popup__close-icon_type_full-picture' type='button'></button>                
+          <img class='full-picture__card' src='#' alt='Фото'>
+          <figcaption class='full-picture__subtitle'></figcaption>
+        </figure>        
+      </section>
+    </div>
+  </body>
+</html>
