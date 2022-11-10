@@ -7,6 +7,7 @@
   top:20px;
   right:20px;
   cursor: pointer;
+  display: none;
 }
 .element__bin:hover{
   opacity: 0.8;
