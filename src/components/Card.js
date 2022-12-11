@@ -17,10 +17,10 @@ export class Card {
   _likeCard(){
     if (this.checkLike()){      
       this._likeButton.classList.add('element__vector_active');
-      console.log("есть лайк")
+      //console.log("есть лайк")
     } else{      
       this._likeButton.classList.remove('element__vector_active'); 
-      console.log("нет лайка")
+      //console.log("нет лайка")
     }
   }
   //проверка на наличие моего id в списке лайков
@@ -33,17 +33,9 @@ export class Card {
     //лайк    
     const likes = this._element.querySelector('.element__likes');
     likes.textContent = this._likes.length;
-    this._likeButton.addEventListener('click', ()=>{
-      /* if(this._likeCard()){
-        this._deleteLikeApi();      
-        likes.textContent = this._likes.length;
-      }else{
-        this._addLikeApi();        
-        likes.textContent= this._likes.length;
-      };  */
+    this._likeButton.addEventListener('click', ()=>{    
+      this._handler(this);
       this._likeCard();
-      this._handler();
-
     });
     //удаление  
       this._element.querySelector('.element__bin')
@@ -83,8 +75,6 @@ export class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._showBin();
-    //this._likeCard();
-    //this.likesNumber();
     return this._element;    
   }
 }

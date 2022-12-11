@@ -15,7 +15,7 @@ export class Api{
     })
     .catch((er)=>{return Promise.reject(er)})
   }
-/*   getUserInfo(){
+  getUserInfoApi(){
     return fetch(`${this._url}/users/me`, {headers: this._headers})
     .then(res => {
       if (res.ok){        
@@ -25,7 +25,7 @@ export class Api{
       }
     })
     .catch((er)=>{return Promise.reject(er)})
-  } */
+  }
   //инфо о пользователе
   setUserInfoApi(name, about){   
     return fetch(`${this._url}/users/me/`, {
@@ -57,7 +57,7 @@ export class Api{
     .catch((er)=>{return Promise.reject(er)})
   }
   
-deleteCardApi(cardId){
+  deleteCardApi(cardId){
   return fetch(`${this._url}/cards/${cardId}`, {
     method: 'DELETE', 
     headers:this._headers})
