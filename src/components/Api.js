@@ -71,7 +71,7 @@ export class Api{
   .catch((er)=>{return Promise.reject(er)})
 }
 //смена аватара
-changeAvatar(url){
+changeAvatarApi(url){
   return fetch(`${this._url}/users/me/avatar`, {
     method: 'PATCH', 
     headers:this._headers,

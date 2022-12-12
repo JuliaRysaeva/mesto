@@ -30,10 +30,10 @@ function handleCardClick({name:name, link:link}){
 }
 //api
 const configApi = {
-  url: 'https://mesto.nomoreparties.co/v1/cohort-52',
+  url: 'https://mesto.nomoreparties.co/v1/cohort-55',
   headers: {
     'Content-Type': 'application/json',
-    authorization: 'bf7d5ae4-8116-46c1-83be-285f1b27d098'
+    authorization: 'a8376a6a-c722-450c-a41c-6e86d0a979a4'
   }  
 }
 const api = new Api(configApi)
@@ -75,9 +75,10 @@ profileOverlay.addEventListener('click', ()=>{
   newAvatar.open();
 })
 function handleAvatar(data){
-   api.changeAvatar(data.link)
+   api.changeAvatarApi(data.link)
    .then(res=>{
     userInfo.setAvatar(res.avatar);
+
   })
   .catch((err) => {console.log(err);
   });
@@ -95,30 +96,37 @@ function createCard(data){
   },
     template, handleCardClick,{
       handler: (card)=>{
-        const likes = document.querySelector('.element__likes');
         if(card.checkLike()){
           api.deleteLikeApi(data)
+          console.log(res.likes)
           .then(res=>{
-            likes.textContent = res.length;})
+            return res.likes;
+          })
           }else{
             api.addLikeApi(data)
             .then(res=>{
-              likes.textContent = res.length;})
-            }},      
+              console.log(res.likes)
+              return res.likes;
+            })
+            }
+          card.likeCard()},      
       /* handleAddLikeApi:()=>{
-        api.addLikeApi(data).then(res=>{
+        api.addLikeApi(data)
+        .then(res=>{
           return res;
         })
       }, 
       handleDeleteLikeApi:()=>{
-        api.deleteLikeApi(data).then(res=>{
+        api.deleteLikeApi(data)
+        .then(res=>{
           return res;
         })        
-      } ,*/   
+      } ,  */  
       deleteConfirm:()=>{
         handleDeleteSubmit(data)
       }
     })
+
   const createNewCard = newCard.generateCard();
   return createNewCard;  
 }
@@ -148,8 +156,14 @@ const items=data.slice(0,10);
     }
   }, cardsContainer);
   cardList.renderItems();
-  api.getUserInfoApi().then(res=>{
+  //установка данных с сервера на страницу
+ api.getUserInfoApi()
+  .then(res=>{
   return res})
+  .then(res=>{
+    userInfo.setUserInfo(res.name, res.about);
+    userInfo.setAvatar(res.avatar);
+  })
 })
 .catch((err) => {
   console.log(err);
