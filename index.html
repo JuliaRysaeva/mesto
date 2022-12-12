@@ -14,11 +14,14 @@
   
       <main class='content'>
         <section class='profile'>
-          <div class='profile__avatar'></div>
+          <div class='profile__avatar'>
+            <img class='profile__photo' src="" alt='Ваш аватар'>
+            <div class='profile__overlay'></div>
+          </div>
           <div class='profile__info'>
-            <h1 class='profile__title'>Космонавт</h1>
+            <h1 class='profile__title'></h1>
             <button class='profile__icon' type='button'></button>
-            <p class='profile__job'>Исследователь космоса</p>            
+            <p class='profile__job'></p>            
           </div>
           <button class='profile__add-button' type='button'></button>
         </section>
@@ -30,7 +33,9 @@
               <img class='element__mask-group' alt='#'>
               <div class='element__text'>
                 <p class='element__title'></p>
-                <button class='element__vector' type='button'></button>
+                <button class='element__vector' type='button'>
+                  <p class='element__likes'>0</p>
+                </button>                
               </div>           
             </article>
           </template>        
@@ -48,23 +53,23 @@
             <h2 class='popup__title'>Редактировать профиль</h2>
             <input type='text' name='name' id='name' class='popup__form-field popup__form-field_user-name_name' placeholder='Имя' minlength='2' maxlength='40' required>
             <span class='popup__input-error name-error'></span>
-            <input type='text' name='job' id='job' class='popup__form-field popup__form-field_user-job_job' placeholder='О себе' minlength='2' maxlength='200' required>
+            <input type='text' name='about' id='job' class='popup__form-field popup__form-field_user-job_job' placeholder='О себе' minlength='2' maxlength='200' required>
             <span class='popup__input-error job-error'></span>
-            <button class='popup__button popup__button_type_safe' type='submit'>Сохранить</button>
+            <button class='popup__button popup__button_type_safe' type='submit'>Сохранение...</button>
           </form>
         </div>
       </section>
 
-       <section class='popup popup_type_add-card '>        
+       <section class='popup popup_type_add-card'>        
         <div class='popup__container popup__overlay-close'>
           <button class='popup__close-icon popup__close-icon_type_add-card' type='button'></button>
           <form name='addCard' class='popup__form popup__form_type_add-card' novalidate>
             <h2 class='popup__title'>Новое место</h2>
-            <input id='card-name' type='text' name='card' class='popup__form-field popup__form-field_card-name_name' placeholder='Название' minlength='2' maxlength='30' required >
+            <input id='card-name' type='text' name='name' class='popup__form-field popup__form-field_card-name_name' placeholder='Название' minlength='2' maxlength='30' required >
             <span class='popup__input-error card-name-error'></span>
             <input id='card-url' type='url' name='link' class='popup__form-field popup__form-field_card-link_link' placeholder='Ссылка на картинку' required>
             <span class='popup__input-error card-url-error'></span>
-            <button class='popup__button popup__button_type_create' type='submit'>Создать</button>
+            <button class='popup__button popup__button_type_create' type='submit'>Создание...</button>
           </form>
         </div>
       </section>
@@ -75,6 +80,28 @@
           <img class='full-picture__card' src='#' alt='Фото'>
           <figcaption class='full-picture__subtitle'></figcaption>
         </figure>        
+      </section>
+
+      <section class='popup popup_type_delete-card'>        
+        <div class='popup__container popup__overlay-close'>
+          <button class='popup__close-icon popup__close-icon_type_delete-card' type='button'></button>
+          <form name='deleteCard' class='popup__form popup__form_type_delete-card' novalidate>
+            <h2 class='popup__title'>Вы уверены?</h2>            
+            <button class='popup__button popup__button_type_yes' type='submit'>Да</button>
+          </form>
+        </div>
+      </section>
+
+      <section class='popup popup_type_update-avatar'>        
+        <div class='popup__container popup__overlay-close'>
+          <button class='popup__close-icon popup__close-icon_type_update-avatar' type='button'></button>
+          <form name='updateAvatar' class='popup__form popup__form_type_update-avatar' novalidate>
+            <h2 class='popup__title'>Обновить аватар</h2>            
+            <input id='card-url' type='url' name='link' class='popup__form-field popup__form-field_card-link_link' placeholder='Ссылка на фото' required>
+            <span class='popup__input-error card-url-error'></span>
+            <button class='popup__button popup__button_type_create' type='submit'>Сохранение...</button>
+          </form>
+        </div>
       </section>
     </div>
   </body>
