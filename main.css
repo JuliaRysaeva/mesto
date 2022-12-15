@@ -29,7 +29,7 @@
 /*!*************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar/profile__avatar.css ***!
   \*************************************************************************************************************************************************************************/
-.profile__avatar{background-image:url(5c053c333dd5608d6256.jpg);background-size:cover;border-radius:90px;height:120px;margin-right:30px;position:relative;width:120px}@media screen and (max-width:660px){.profile__avatar{margin:auto}}
+.profile__avatar{background-size:cover;border-radius:90px;height:120px;margin-right:30px;position:relative;width:120px}@media screen and (max-width:660px){.profile__avatar{margin:auto}}
 /*!***********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__photo/profile__photo.css ***!
   \***********************************************************************************************************************************************************************/
@@ -89,7 +89,7 @@
 /*!****************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__vector/_active/element__vector_active.css ***!
   \****************************************************************************************************************************************************************************************/
-.element__vector_active{background-image:url(fe17a515669479b1e649.svg);background-position:50%;border:none;cursor:pointer;display:inline-block;height:19px;margin:5px 5px 0 auto;opacity:1;padding:0;width:22px}
+.element__vector_active{background-image:url(fe17a515669479b1e649.svg)}
 /*!*******************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__bin/element__bin.css ***!
   \*******************************************************************************************************************************************************************/
