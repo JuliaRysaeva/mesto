@@ -1,33 +1,27 @@
 export class Card {
-  constructor (data, template, clickOnCard,
-    {handler, /* handleAddLikeApi, handleDeleteLikeApi, */deleteConfirm}){
+  constructor (data, template, clickOnCard,{handler, deleteConfirm}){
   this._name=data.name;
   this._link=data.link;
-  this._clickOnCard = clickOnCard;
-  this._template = template;
-  this._userId = data.owner._id;
-  this._likes = data.likes;
+  this._ownerId = data.owner._id;  
   this._cardId = data._id; 
+  this._likes = data.likes;
+  this._template = template;
+  this._clickOnCard = clickOnCard;
   this._handler = handler;
-  /* this._addLikeApi=handleAddLikeApi;this._deleteLikeApi=handleDeleteLikeApi; */
-  this._deleteConfirm=deleteConfirm;
-  }
-  //смена состояния кнопки лайка
-  likeCard(){    
-    this._likesNum.textContent=this._likes.length;
-    if (this.checkLike()){      
-      this._likeButton.classList.add('element__vector_active');
-    }else{      
-      this._likeButton.classList.remove('element__vector_active'); 
-    }
+  this._deleteConfirm=deleteConfirm; 
   }
   //проверка на наличие моего id в списке лайков
   checkLike(){
-    this._likes.some(el => {
-      el._id === 'a76f63b4457d81002b00501b';    
-      return el._id});
+    return this._likes.some(el => {
+      return el._id === this._ownerId/* 'a76f63b4457d81002b00501b' */;});  
   }
-  //метод, создающий карточку с названием и картинкой (наполнение карточки)
+  //обновление массива массива лайков
+  likeCard(likes){ 
+    this._likes = likes;  
+    this._likesNum.textContent=this._likes.length;   
+    this._likeButton.classList.toggle('element__vector_active', this.checkLike())
+  }  
+  //метод, создающий карточку с названием и картинкой
   generateCard(){
     this._element=this._getTemplate();
     this._cardImage = this._element.querySelector('.element__mask-group');
@@ -37,17 +31,15 @@ export class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._showBin();
-    this.likeCard();
+    this.likeCard(this._likes);
     return this._element;    
   }
   _setEventListeners(){
-    //лайк
+    //лайк    
     this._likesNum = this._element.querySelector('.element__likes')
-    this._likesNum.textContent=this._likes.length; 
-    this._likeButton.addEventListener('click', ()=>{ 
-      this._likesNum.textContent=this._likes.length;  
+    this._likeButton.addEventListener('click', ()=>{      
       this._handler(this);
-    });
+    })
     //удаление  
       this._element.querySelector('.element__bin')
       .addEventListener('click', ()=>{
@@ -71,10 +63,9 @@ export class Card {
   }   
   //корзина удаления только на карточках с моим id
   _showBin(){
-    if ((this._userId==='a76f63b4457d81002b00501b')){
+    if ((this._ownerId==='a76f63b4457d81002b00501b')){
     this._element.querySelector('.element__bin')
     .classList.add('element__bin_active');
     }      
-  }
-  
+  }  
 }

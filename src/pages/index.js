@@ -58,7 +58,6 @@ function handleProfileFormSubmit(data){
   api.getUserInfoApi()
   .then(res=>{
    userInfo.setUserInfo(res.name, res.about);
-    console.log('res'+ res)
   })
   api.setUserInfoApi(data.name, data.about)
   .then(res=>{
@@ -78,7 +77,6 @@ function handleAvatar(data){
    api.changeAvatarApi(data.link)
    .then(res=>{
     userInfo.setAvatar(res.avatar);
-
   })
   .catch((err) => {console.log(err);
   });
@@ -88,7 +86,7 @@ function createCard(data){
   const newCard = new Card({
     name: data.name, 
     link: data.link,
-    likes:data.likes,
+    likes: data.likes,
     owner: {
       _id: data.owner._id
     },
@@ -97,31 +95,18 @@ function createCard(data){
     template, handleCardClick,{
       handler: (card)=>{
         if(card.checkLike()){
-          api.deleteLikeApi(data)
-          console.log(res.likes)
+          api.deleteLikeApi(data)          
           .then(res=>{
-            return res.likes;
-          })
+            card.likeCard(res.likes);
+          });
+          card.likeCard(data.likes);        
           }else{
             api.addLikeApi(data)
             .then(res=>{
-              console.log(res.likes)
-              return res.likes;
-            })
-            }
-          card.likeCard()},      
-      /* handleAddLikeApi:()=>{
-        api.addLikeApi(data)
-        .then(res=>{
-          return res;
-        })
-      }, 
-      handleDeleteLikeApi:()=>{
-        api.deleteLikeApi(data)
-        .then(res=>{
-          return res;
-        })        
-      } ,  */  
+              card.likeCard(res.likes);                           
+            });
+          }
+        },   
       deleteConfirm:()=>{
         handleDeleteSubmit(data)
       }
@@ -156,10 +141,10 @@ const items=data.slice(0,10);
     }
   }, cardsContainer);
   cardList.renderItems();
+  
   //установка данных с сервера на страницу
  api.getUserInfoApi()
-  .then(res=>{
-  return res})
+  .then(res=>{return res})
   .then(res=>{
     userInfo.setUserInfo(res.name, res.about);
     userInfo.setAvatar(res.avatar);

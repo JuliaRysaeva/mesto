@@ -88,15 +88,16 @@ changeAvatarApi(url){
 //постановка лайка 
 addLikeApi(card){
   return fetch(`${this._url}/cards/${card._id}/likes`, {
-    method: 'PUT', 
+    method: 'PUT',  
     headers:this._headers,
-    body: JSON.stringify({_id:'1ab53a77e830727eb646c0cb'})})
+    body: JSON.stringify({_id:'a76f63b4457d81002b00501b'})})
     .then(res => {
     if (res.ok){        
       return res.json()        
     }else{
       return Promise.reject(`Ошибка: ${res.status}`)
     }
+    /* this._serverResult(res); */
   })
   .catch((er)=>{return Promise.reject(er)})
 }
@@ -114,4 +115,11 @@ deleteLikeApi(card){
   })
   .catch((er)=>{return Promise.reject(er)})
 }
+/* _serverResult(res){
+  if (res.ok){        
+    return res.json()        
+  }else{
+    return Promise.reject(`Ошибка: ${res.status}`)
+  }
+} */
 }
