@@ -4,7 +4,8 @@ export class PopupWithForm extends Popup {
     super(popup);
     this._handleSubmit = handleFormSubmit;
     this._form = this._popup.querySelector('.popup__form');
-    //this.buttonText = text;    
+    this._submitButton=this._form.querySelector('.popup__button');
+    this._submitButtonDefaultText = this._submitButton.textContent;
   }
   _getInputValues(){
     this._inputsList=Array.from(this._form.querySelectorAll('.popup__form-field'));  
@@ -16,12 +17,18 @@ export class PopupWithForm extends Popup {
   } 
   setEventListeners(){
     super.setEventListeners();  
-    this._button=this._form.querySelector('.popup__button') 
+    //console.log('butt',this._submitButton)
     this._form.addEventListener('submit', (e)=>{           
       this._handleSubmit(this._getInputValues());
       e.preventDefault();      
-      this.close(); 
     })
+  }
+  setButtonState(isLoading, text){
+    if(isLoading){
+      this._submitButton.textContent = text;
+    }else{
+      this._submitButton.textContent=this._submitButtonDefaultText      
+    }    
   }
   close(){
     super.close()
