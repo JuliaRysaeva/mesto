@@ -44,9 +44,6 @@ Promise.all([api.getUserInfoApi(), api.getInitialCards()])
   .then(([res, arr]) => {
     userInfo.setUserInfo(res.name, res.about, res._id);
     userInfo.setAvatar(res.avatar);
-   /*  const userData = userInfo.getUserInfo();
-    nameInput.value = userData.name;
-    jobInput.value = userData.about; */
     cardList.renderItems(arr)
   })
   .catch((err) => {
@@ -147,8 +144,7 @@ function createCard(data) {
   return createNewCard;
 }
 //открытие формы для карточки
-const popupAddCard = new PopupWithForm(popupNewCard,
-  handleCardFormSubmit);
+const popupAddCard = new PopupWithForm(popupNewCard, handleCardFormSubmit);
 buttonAddCard.addEventListener('click', () => {
   popupAddCard.open();
   cardFormValidator.resetError();
