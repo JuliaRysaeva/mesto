@@ -4,7 +4,7 @@ export class Card {
     this._link=data.link;
     this._userId = userId;
     this._ownerId = data.owner._id;  
-    this._cardId = data._id; 
+    this.cardId = data._id; 
     this._likes = data.likes;
     this._template = template;
     this._clickOnCard = clickOnCard;
@@ -48,7 +48,7 @@ export class Card {
     //удаление
     this._element.querySelector('.element__bin')
     .addEventListener('click', ()=>{
-      this._deleteConfirm();
+      this._deleteConfirm(this);
     });
     // на весь экран
     this._cardImage.addEventListener('click', ()=>{
@@ -63,7 +63,7 @@ export class Card {
     return cardElement;
   }
   deleteCard(){
-    this._element = closest('.element').remove;
+    this._element.remove();
     this._element = null;
   }   
   //корзина удаления только на карточках с моим id
